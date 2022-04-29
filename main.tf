@@ -1,7 +1,7 @@
 # load environment variables into terminal
-# $ export TF_VAR_auth0_domain=""
-# $ export TF_VAR_auth0_client_id=""
-# $ export TF_VAR_auth0_client_secret=""
+# export TF_VAR_auth0_domain=""
+# export TF_VAR_auth0_client_id=""
+# export TF_VAR_auth0_client_secret=""
 variable "auth0_domain" {}
 variable "auth0_client_id" {}
 variable "auth0_client_secret" {}
@@ -20,8 +20,8 @@ terraform {
   }
 }
 
+##################### AUTH0 ##########################################
 
-# https://github.com/auth0/terraform-provider-auth0
 provider "auth0" {
   domain        = var.auth0_domain
   client_id     = var.auth0_client_id
@@ -40,9 +40,19 @@ resource "auth0_client" "terraform-secure-express" {
   }
 }
 
-# build the docker image in order to use it as a resource here
+##################### DOCKER ##########################################
+
+data "docker_registry_image" "terraform-secure-express" {
+  name = "sjfox/terraform-secure-express:1.0.2"
+}
+
+output "docker_container" {
+  value = data.docker_registry_image.terraform-secure-express.name
+}
+
 resource "docker_image" "terraform-secure-express" {
-  name = "terraform-secure-express:1.0"
+  name          = data.docker_registry_image.terraform-secure-express.name
+  pull_triggers = [data.docker_registry_image.terraform-secure-express.sha256_digest]
 }
 
 resource "docker_container" "terraform-secure-express" {

@@ -5,7 +5,13 @@ This demo contains a Node.js Express application running on Docker. It's meant t
 ## NOTE
 
 - Need to add `http://localhost:3000/callback` to Auth0 applications's allowed callbacks
+- Need to add `http://localhost:3000` to Auth0 applications's allowed logout
 - need to enable a 'connection' in applications connection settings
+
+## Resources
+
+- https://auth0.com/blog/use-terraform-to-manage-your-auth0-configuration/#Prerequisites-and-Pre-Existing-Code
+- https://github.com/auth0/terraform-provider-auth0
 
 ## Getting Started
 

@@ -7,6 +7,7 @@ var router = express.Router();
 
 /* GET user profile. */
 router.get('/user', secured(), function (req, res, next) {
+  console.log(req.user)
   let accessToken = req.user.accessToken;
   let permissions = [];
   console.log(accessToken);
