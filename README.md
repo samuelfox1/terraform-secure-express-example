@@ -1,6 +1,11 @@
 # terraform-secure-express-example
 
-This demo contains a Node.js Express application running on Docker. It's meant to be used in conjunction with the [Auth0 Blog post about configuring Auth0 using Terraform]().
+This demo contains a Node.js Express application running on Docker. It's meant to be used in conjunction with the [Auth0 Blog post about configuring Auth0 using Terraform](https://auth0.com/blog/use-terraform-to-manage-your-auth0-configuration/#Prerequisites-and-Pre-Existing-Code).
+
+## NOTE
+
+- Need to add `http://localhost:3000/callback` to Auth0 applications's allowed callbacks
+- need to enable a 'connection' in applications connection settings
 
 ## Getting Started
 
