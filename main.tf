@@ -42,6 +42,11 @@ resource "auth0_client" "terraform-secure-express" {
 
 ##################### DOCKER ##########################################
 
+
+provider "docker" {
+  # Configuration options
+}
+
 data "docker_registry_image" "terraform-secure-express" {
   name = "sjfox/terraform-secure-express:1.0.2"
 }
